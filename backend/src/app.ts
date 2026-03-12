@@ -47,8 +47,11 @@ const frontendPath = path.join(__dirname, '../../frontend/dist');
 app.use(express.static(frontendPath));
 
 // Fallback para SPA (qualquer rota que não seja /api, serve o index.html)
-app.get('(.*)', (req, res, next: any) => {
+app.use((req, res, next) => {
+  // Se a rota começa com /api e chegou aqui, é porque não existe no backend (404)
   if (req.path.startsWith('/api')) return next();
+  
+  // Para qualquer outra rota (navegação do Vue), entrega o index.html
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
