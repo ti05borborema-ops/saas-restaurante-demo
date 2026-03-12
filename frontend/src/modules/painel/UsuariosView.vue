@@ -252,8 +252,9 @@ const currentUserId = computed(() => {
     const token = localStorage.getItem('token');
     if (!token) return null;
     const parts = token.split('.');
-    if (parts.length < 2) return null;
-    const payload = JSON.parse(atob(parts[1]));
+    const b64Payload = parts[1];
+    if (!b64Payload) return null;
+    const payload = JSON.parse(atob(b64Payload));
     return payload.id;
   } catch { return null; }
 });
