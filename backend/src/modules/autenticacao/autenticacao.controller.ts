@@ -8,8 +8,12 @@ export class AutenticacaoController {
     try {
       const usuarios = await autenticacaoService.listarUsuariosAtivos();
       return res.json(usuarios);
-    } catch (erro) {
-      return res.status(500).json({ erro: 'Erro ao listar usuários' });
+    } catch (erro: any) {
+      console.error('[AutenticacaoController] Erro ao listar usuários:', erro);
+      return res.status(500).json({ 
+        erro: 'Erro ao listar usuários', 
+        detalhes: erro.message 
+      });
     }
   }
 
