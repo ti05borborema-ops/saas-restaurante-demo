@@ -3,11 +3,17 @@ import { Pool } from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
 
-// Configuração flexível: Prioriza DATABASE_URL (Render/Cloud) ou usa as credenciais locais
+console.log('[DB] Configurando conexão...');
+if (!process.env.DATABASE_URL) {
+  console.warn('[DB] AVISO: DATABASE_URL não encontrada no ambiente. Usando fallback local.');
+} else {
+  console.log('[DB] DATABASE_URL detectada.');
+}
+
 export const pool = new Pool(process.env.DATABASE_URL ? {
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false // Necessário para Supabase/Render em muitos casos
+    rejectUnauthorized: false
   }
 } : {
   host: process.env.DB_HOST || 'localhost',
