@@ -10,8 +10,8 @@ O banco de dados já foi inicializado por mim no Supabase que você informou. To
 2. Conecte o repositório da pasta `sass-restaurante-demo`.
 3. Configure o comando de Build e Start:
    - **Environment**: `Node`
-   - **Build Command**: `npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend`
-   - **Start Command**: `npm start` (ele vai rodar o backend, que já entrega o site pronto)
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm start`
 4. Adicione as **Environment Variables**:
    - `DATABASE_URL`: (URL do Supabase que você me passou)
    - `JWT_SECRET`: `qualquer-chave-secreta`
