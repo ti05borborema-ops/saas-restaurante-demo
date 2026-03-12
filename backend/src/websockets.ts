@@ -14,7 +14,7 @@ export const inicializarWebSockets = (server: HttpServer) => {
     }
   });
 
-  io.use((socket, next) => {
+  io.use((socket: any, next: any) => {
     const token = socket.handshake.auth.token;
     if (!token) return next(new Error('Autenticação WebSocket Requerida'));
 

@@ -47,7 +47,7 @@ const frontendPath = path.join(__dirname, '../../frontend/dist');
 app.use(express.static(frontendPath));
 
 // Fallback para SPA (qualquer rota que não seja /api, serve o index.html)
-app.get('(.*)', (req, res, next) => {
+app.get('(.*)', (req, res, next: any) => {
   if (req.path.startsWith('/api')) return next();
   res.sendFile(path.join(frontendPath, 'index.html'));
 });

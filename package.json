@@ -7,6 +7,6 @@
     "build-frontend": "npm run build --prefix frontend",
     "build-backend": "npm run build --prefix backend",
     "start": "npm run start --prefix backend",
-    "build": "npm run build-backend && npm run build-frontend"
+    "build": "npm run install-all && npm run build-backend && npm run build-frontend"
   }
 }
